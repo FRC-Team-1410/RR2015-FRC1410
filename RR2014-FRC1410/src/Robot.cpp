@@ -1,60 +1,57 @@
 #include "WPILib.h"
-#include "Commands/Command.h"
-//#include "Commands/ExampleCommand.h"
-#include "Commands/TeleOpTankDrive.h"
-#include "CommandBase.h"
+#include "Robot.h"
 
-class Robot: public IterativeRobot
-{
-private:
-	Command *autonomousCommand;
-	Command * tankDrive;
-	LiveWindow *lw;
+#include "Commands/Drive/TeleOpTankDrive.h"
+#include "Commands/Intake Arms/ToggleIntakeWheels.h"
+#include "Commands/Intake Arms/MoveElbowPosition.h"
+#include "Commands/Tote Lifter/MoveToteLifter.h"
+#include "Commands/Can Manipulator/MoveCanLifter.h"
+#include "Commands/Can Manipulator/ArticulateCanManipulator.h"
+#include "Commands/Autonomous/RaiseToteLifter.h"
+#include "Commands/Autonomous/LowerToteLifter.h"
+#include "Commands/Autonomous/DriveStraight.h"
+#include "Commands/Autonomous/RaiseCanLifter.h"
+#include "Commands/Autonomous/LowerCanLifter.h"
+#include "Commands/Autonomous/DriveTurn.h"
+#include "Commands/Autonomous/GrabCan.h"
+#include "Commands/Autonomous/RemoveCans.h"
+#include "Commands/Autonomous/Autonomous.h"
 
-	void RobotInit()
-	{
-		CommandBase::init();
-		//autonomousCommand = new ExampleCommand();
-		tankDrive = new TeleOpTankDrive();
-		lw = LiveWindow::GetInstance();
-	}
+DriveBase * Robot::drivebase = NULL;
+IntakeArms * Robot::intakearms = NULL;
+ToteLifter * Robot::totelifter = NULL;
+CanManipulator * Robot::canmanipulator = NULL;
+OI * Robot::oi = NULL;
+
+void Robot::RobotInit(){
+	drivebase = new DriveBase();
+	intakearms = new IntakeArms();
+	totelifter = new ToteLifter();
+	canmanipulator = new CanManipulator();
+	oi = new OI();
 	
-	void DisabledPeriodic()
-	{
-		Scheduler::GetInstance()->Run();
-	}
+	lw = LiveWindow::GetInstance();
+	autonomouscommand = new Autonomous();
+}
 
-	void AutonomousInit()
-	{
-		if (autonomousCommand != NULL)
-			autonomousCommand->Start();
-	}
+void Robot::AutonomousInit(){
+	autonomouscommand->Start();
+}
 
-	void AutonomousPeriodic()
-	{
-		Scheduler::GetInstance()->Run();
-	}
+void Robot::AutonomousPeriodic(){
 
-	void TeleopInit()
-	{
-		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to 
-		// continue until interrupted by another command, remove
-		// this line or comment it out.
-		if (autonomousCommand != NULL)
-			autonomousCommand->Cancel();
-	}
+}
 
-	void TeleopPeriodic()
-	{
-		Scheduler::GetInstance()->Run();
-	}
+void Robot::TeleopInit(){
+	autonomouscommand->Cancel();
+}
 
-	void TestPeriodic()
-	{
-		lw->Run();
-	}
-};
+void Robot::TeleopPeriodic(){
+	Scheduler::GetInstance()->Run();
+}
+
+void Robot::TestPeriodic(){
+	lw->Run();
+}
 
 START_ROBOT_CLASS(Robot);
-
