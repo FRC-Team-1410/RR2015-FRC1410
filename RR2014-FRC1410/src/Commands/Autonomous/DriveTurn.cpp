@@ -3,6 +3,7 @@
 
 DriveTurn::DriveTurn(){
 	Requires(Robot::drivebase);
+	angle = (90);
 }
 
 void DriveTurn::Initialize(){
@@ -10,17 +11,22 @@ void DriveTurn::Initialize(){
 }
 
 void DriveTurn::Execute(){
-	Robot::drivebase->AutoDriveTurn(1, 90);
+	Robot::drivebase->DriveTank(1, 1);
 	Wait(0.01);
 	End();
 }
 
 bool DriveTurn::IsFinished(){
-	return false;
+	if(Robot::drivebase->GetGyroAngle() < angle){
+		return false;
+	}
+	else{
+		return true;
+	}
 }
 
 void DriveTurn::End(){
-	Robot::drivebase->AutoDriveTurn(0, 90);
+	Robot::drivebase->DriveTank(0, 0);
 }
 
 void DriveTurn::Interrupted(){

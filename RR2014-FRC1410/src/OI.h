@@ -6,20 +6,23 @@
 class OI
 {
 private:
-	Joystick * driverStick;
-	Joystick * operatorStick;
+	Joystick * driver_stick;
+	Joystick * operator_stick;
 
-	JoystickButton * toggleWheels;
-	JoystickButton * moveElbowsOut;
-	JoystickButton * moveElbowsIn;
-	JoystickButton * toggleToteLifter;
-	JoystickButton * toggleCanLifter;
-	JoystickButton * articulateCanManipulator;
+	JoystickButton * toggle_inner_in;
+	JoystickButton * toggle_inner_out;
+	JoystickButton * reset_robot;
+	JoystickButton * toggle_outer_rollers;
+	JoystickButton * pick_up_can;
+	JoystickButton * pick_up_tote;
+	JoystickButton * toggle_can_lifter;
+	JoystickButton * toggle_tote_lifter;
 
 public:
 	OI();
 	double GetStickAxis(bool left);
-	double GetOmniAxis();
+	double DriveUpperArms();
+	double DriveLowerArms();
 };
 
 #endif

@@ -10,11 +10,11 @@ void RaiseToteLifter::Initialize(){
 }
 
 void RaiseToteLifter::Execute(){
-	Robot::totelifter->RaiseElevator(1);
+		Robot::totelifter->RaiseElevator(1);
 }
 
 bool RaiseToteLifter::IsFinished(){
-	return false;
+	return !Robot::totelifter->UpperLimit();
 }
 
 void RaiseToteLifter::End(){

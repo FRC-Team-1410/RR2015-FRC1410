@@ -10,11 +10,11 @@ void LowerToteLifter::Initialize(){
 }
 
 void LowerToteLifter::Execute(){
-	Robot::totelifter->RaiseElevator(1);
+	Robot::totelifter->LowerElevator(1);
 }
 
 bool LowerToteLifter::IsFinished(){
-	return false;
+	return !Robot::totelifter->LowerLimit();
 }
 
 void LowerToteLifter::End(){

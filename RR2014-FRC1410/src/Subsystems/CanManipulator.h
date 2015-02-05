@@ -5,9 +5,9 @@
 
 class CanManipulator: public Subsystem{
 private:
-	CANTalon * elev_motor;
-	CANTalon * left_motor;
-	CANTalon * right_motor;
+	CANSpeedController * elev_motor;
+	CANSpeedController * left_motor;
+	CANSpeedController * right_motor;
 public:
 	CanManipulator();
 	void InitDefaultCommand();

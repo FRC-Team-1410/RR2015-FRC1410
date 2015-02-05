@@ -8,7 +8,7 @@ DriveBase::DriveBase() : Subsystem("DriveBase"){
 	fr_motor = new CANTalon(front_right_drive);
 	bl_motor = new CANTalon(back_left_drive);
 	br_motor = new CANTalon(back_right_drive);
-	drive_limit = new AnalogInput(drive_limit_switch);
+	//drive_limit = new AnalogInput(drive_limit_switch);
 	drive_gyro = new Gyro(drive_gyro_channel);
 	left_encoder = new Encoder(left_encoder_a, left_encoder_b);
 	right_encoder = new Encoder(right_encoder_a, right_encoder_b, true);
@@ -30,9 +30,9 @@ void DriveBase::DriveTank(float speed1, float speed2){
 	br_motor->Set(speed2);
 }
 
-bool DriveBase::IsLimitSwitchToggled(){
+/**bool DriveBase::IsLimitSwitchToggled(){
 	return drive_limit;
-}
+}**/
 
 void DriveBase::ResetGyro(){
 	drive_gyro->Reset();
@@ -45,13 +45,8 @@ void DriveBase::AutoDriveStraight(float speed){
 	br_motor->Set(-speed);
 }
 
-void DriveBase::AutoDriveTurn(float speed, float angle){
-	while(drive_gyro->GetAngle() >= angle){
-		fl_motor->Set(speed);
-		fr_motor->Set(speed);
-		bl_motor->Set(speed);
-		br_motor->Set(speed);
-	}
+double DriveBase::GetGyroAngle(){
+	return drive_gyro->GetAngle();
 }
 
 double DriveBase::EncoderDistance(double e1, double e2, double distance) {

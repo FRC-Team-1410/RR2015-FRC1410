@@ -1,4 +1,5 @@
 #include "OI.h"
+#include "RobotMap.h"
 
 #include "Commands/Drive/TeleOpTankDrive.h"
 #include "Commands/Intake Arms/ToggleIntakeWheels.h"
@@ -42,35 +43,33 @@ float InputShape(float userValue){
 
 OI::OI(){
 	//define sticks
-	driverStick = new Joystick(0);
-	operatorStick = new Joystick(1);
+	driver_stick = new Joystick(0);
+	operator_stick = new Joystick(1);
 
 	//define buttons
-	toggleWheels = new JoystickButton(operatorStick, 8);
-	moveElbowsOut = new JoystickButton(operatorStick, 4);
-	moveElbowsIn = new JoystickButton(operatorStick, 5);
-	toggleToteLifter = new JoystickButton(operatorStick, 3);
-	toggleCanLifter = new JoystickButton(operatorStick, 2);
-	articulateCanManipulator = new JoystickButton(operatorStick, 9);
-
-	//define button actions
-	toggleWheels->ToggleWhenPressed(new ToggleIntakeWheels());
-	moveElbowsOut->WhileHeld(new MoveElbowPosition(-0.5));
-	moveElbowsIn->WhileHeld(new MoveElbowPosition(0.5));
-	toggleToteLifter->ToggleWhenPressed(new MoveToteLifter());
-	toggleCanLifter->ToggleWhenPressed(new MoveCanLifter());
-	articulateCanManipulator->ToggleWhenPressed(new ArticulateCanManipulator(InputShape(operatorStick->GetRawAxis(0))));
+	toggle_inner_in = new JoystickButton(operator_stick, inner_rollers_in);
+	toggle_inner_out = new JoystickButton(operator_stick, inner_rollers_out);
+	reset_robot = new JoystickButton(operator_stick, reset_robot_button);
+	toggle_outer_rollers = new JoystickButton(operator_stick, outer_rollers_toggle);
+	pick_up_can = new JoystickButton(operator_stick, pick_can_up);
+	pick_up_tote = new JoystickButton(operator_stick, pick_tote_up);
+	toggle_can_lifter = new JoystickButton(operator_stick, move_can_lifter);
+	toggle_tote_lifter = new JoystickButton(operator_stick, move_tote_lifter);
 }
 
 double OI::GetStickAxis(bool left){
 	if(left){
-		return InputShape(driverStick->GetRawAxis(1));
+		return InputShape(driver_stick->GetRawAxis(left_drive_axis));
 	}
 	else{
-		return InputShape(-driverStick->GetRawAxis(5));
+		return InputShape(-driver_stick->GetRawAxis(right_drive_axis));
 	}
 }
 
-double OI::GetOmniAxis(){
-	return operatorStick->GetRawAxis(0);
+double OI::DriveUpperArms(){
+	return InputShape(operator_stick->GetRawAxis(articulate_upper_arms));
+}
+
+double OI::DriveLowerArms(){
+	return InputShape(operator_stick->GetRawAxis(articulate_lower_arms));
 }

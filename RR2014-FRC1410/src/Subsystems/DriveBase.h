@@ -5,11 +5,11 @@
 
 class DriveBase: public Subsystem{
 private:
-	CANTalon * fl_motor;
-	CANTalon * fr_motor;
-	CANTalon * bl_motor;
-	CANTalon * br_motor;
-	AnalogInput * drive_limit;
+	CANSpeedController * fl_motor;
+	CANSpeedController * fr_motor;
+	CANSpeedController * bl_motor;
+	CANSpeedController * br_motor;
+	//AnalogInput * drive_limit;
 	Gyro * drive_gyro;
 	Encoder * left_encoder;
 	Encoder * right_encoder;
@@ -21,7 +21,7 @@ public:
 	bool IsLimitSwitchToggled();
 	void ResetGyro();
 	void AutoDriveStraight(float speed);
-	void AutoDriveTurn(float speed, float angle);
+	double GetGyroAngle();
 	double EncoderDistance(double e1, double e2, double distance);
 	void ResetEncoders();
 };

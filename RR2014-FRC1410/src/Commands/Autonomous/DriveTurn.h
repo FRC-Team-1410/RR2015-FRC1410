@@ -5,6 +5,7 @@
 #include "WPILib.h"
 
 class DriveTurn: public Command {
+	int angle;
 public:
 	DriveTurn();
 	void Initialize();

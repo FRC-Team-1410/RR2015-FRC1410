@@ -6,6 +6,8 @@ IntakeArms::IntakeArms() : Subsystem("IntakeArms"){
 	right_wheel = new CANTalon(right_intake_wheel);
 	left_elbow = new CANTalon(left_elbow_motor);
 	right_elbow = new CANTalon(right_elbow_motor);
+	left_inner = new CANTalon(left_inner_wheel);
+	right_inner = new CANTalon(right_inner_wheel);
 }
 
 void IntakeArms::InitDefaultCommand(){
@@ -24,4 +26,9 @@ void IntakeArms::ToggleWheels(float speed){
 
 void IntakeArms::AutoRemoveCans(){
 
+}
+
+void IntakeArms::ToggleInnerWheels(float speed){
+	left_inner->Set(speed);
+	right_inner->Set(-speed);
 }

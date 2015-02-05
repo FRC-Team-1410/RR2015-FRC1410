@@ -9,16 +9,15 @@ void ToteLifter::InitDefaultCommand(){
 	//SetDefaultCommand(new ());
 }
 
+bool ToteLifter::UpperLimit(){
+	return elev_motor->GetForwardLimitOK();
+}
+
+bool ToteLifter::LowerLimit(){
+	return elev_motor->GetReverseLimitOK();
+}
 void ToteLifter::MoveElevator(float speed){
-	if(elev_motor->GetForwardLimitOK()){
-		elev_motor->Set(speed);
-	}
-	else if (elev_motor->GetReverseLimitOK()){
-		elev_motor->Set(-speed);
-	}
-	else{
-		elev_motor->Set(-speed);
-	}
+	elev_motor->Set(speed);
 }
 
 void ToteLifter::RaiseElevator(float speed){
