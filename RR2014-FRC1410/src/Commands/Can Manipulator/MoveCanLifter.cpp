@@ -3,20 +3,35 @@
 
 MoveCanLifter::MoveCanLifter(){
 	Requires(Robot::canmanipulator);
+	move_up = false;
 }
 
 void MoveCanLifter::Initialize(){
-
+	move_up = !move_up;
 }
 
 void MoveCanLifter::Execute(){
-	Robot::canmanipulator->MoveElevator(1);
-}
+	if(move_up){
+			if(Robot::canmanipulator->UpperLimit() == true){
+				Robot::canmanipulator->MoveElevator(1);
+			}
+		}
+
+		else{
+			if(Robot::canmanipulator->LowerLimit() == true){
+				Robot::canmanipulator->MoveElevator(-1);
+			}
+		}}
 
 // Make this return true when this Command no longer needs to run execute()
 bool MoveCanLifter::IsFinished(){
-	return false;
-}
+	if(move_up){
+		return !Robot::canmanipulator->UpperLimit();
+	}
+
+	else{
+		return !Robot::canmanipulator->LowerLimit();
+	}}
 
 // Called once after isFinished returns true
 void MoveCanLifter::End(){

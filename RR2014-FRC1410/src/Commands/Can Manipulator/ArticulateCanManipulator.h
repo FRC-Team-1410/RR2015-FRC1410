@@ -5,9 +5,8 @@
 #include "WPILib.h"
 
 class ArticulateCanManipulator: public Command {
-	float armSpeed;
 public:
-	ArticulateCanManipulator(float speed);
+	ArticulateCanManipulator();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

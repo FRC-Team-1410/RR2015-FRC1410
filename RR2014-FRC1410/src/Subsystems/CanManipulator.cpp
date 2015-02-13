@@ -1,4 +1,5 @@
 #include <Subsystems/CanManipulator.h>
+#include "Commands/Can Manipulator/MoveCanLifter.h"
 #include "../RobotMap.h"
 
 CanManipulator::CanManipulator() : Subsystem("ToteElevator"){
@@ -8,26 +9,16 @@ CanManipulator::CanManipulator() : Subsystem("ToteElevator"){
 }
 
 void CanManipulator::InitDefaultCommand(){
-	//SetDefaultCommand(new ());
+	//SetDefaultCommand(new MoveCanLifter());
 }
 
 void CanManipulator::MoveElevator(float speed){
-	if(elev_motor->GetForwardLimitOK()){
 		elev_motor->Set(speed);
-	}
-	else if (elev_motor->GetReverseLimitOK()){
-		elev_motor->Set(-speed);
-	}
-	else{
-		elev_motor->Set(-speed);
-	}
 }
 
 void CanManipulator::ArticulateArms(float speed){
-	while(left_motor->GetForwardLimitOK() != true && right_motor->GetReverseLimitOK() != true){
-		left_motor->Set(speed);
-		right_motor->Set(-speed);
-	}
+	left_motor->Set(speed);
+	right_motor->Set(-speed);
 }
 
 void CanManipulator::LowerElevator(float speed){
@@ -43,4 +34,12 @@ void CanManipulator::AutoGrabCan(float speed){
 			left_motor->Set(speed);
 			right_motor->Set(-speed);
 		}
+}
+
+bool CanManipulator::UpperLimit(){
+	return elev_motor->GetForwardLimitOK();
+}
+
+bool CanManipulator::LowerLimit(){
+	return elev_motor->GetReverseLimitOK();
 }

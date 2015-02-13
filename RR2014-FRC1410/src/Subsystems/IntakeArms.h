@@ -18,7 +18,6 @@ public:
 	void MoveElbows(float speed);
 	void ToggleWheels(float speed);
 	void ToggleInnerWheels(float speed);
-	void AutoRemoveCans();
 };
 
 #endif

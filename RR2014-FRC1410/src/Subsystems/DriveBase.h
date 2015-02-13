@@ -10,6 +10,7 @@ private:
 	CANSpeedController * bl_motor;
 	CANSpeedController * br_motor;
 	//AnalogInput * drive_limit;
+	RobotDrive * drive;
 	Gyro * drive_gyro;
 	Encoder * left_encoder;
 	Encoder * right_encoder;

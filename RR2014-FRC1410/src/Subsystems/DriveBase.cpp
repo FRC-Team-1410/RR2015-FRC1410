@@ -12,7 +12,7 @@ DriveBase::DriveBase() : Subsystem("DriveBase"){
 	drive_gyro = new Gyro(drive_gyro_channel);
 	left_encoder = new Encoder(left_encoder_a, left_encoder_b);
 	right_encoder = new Encoder(right_encoder_a, right_encoder_b, true);
-
+	drive = new RobotDrive(1, 2, 3, 4);
 	left_encoder->Reset();
 	right_encoder->Reset();
 }

@@ -16,6 +16,8 @@ public:
 	void LowerElevator(float speed);
 	void RaiseElevator(float speed);
 	void AutoGrabCan(float speed);
+	bool UpperLimit();
+	bool LowerLimit();
 };
 
 #endif

@@ -1,9 +1,8 @@
 #include "MoveElbowPosition.h"
 #include "../../Robot.h"
 
-MoveElbowPosition::MoveElbowPosition(float speed){
+MoveElbowPosition::MoveElbowPosition(){
 	Requires(Robot::intakearms);
-	elbowSpeed = speed;
 }
 
 // Called just before this Command runs the first time
@@ -13,7 +12,7 @@ void MoveElbowPosition::Initialize(){
 
 // Called repeatedly when this Command is scheduled to run
 void MoveElbowPosition::Execute(){
-	Robot::intakearms->MoveElbows(elbowSpeed);
+	Robot::intakearms->MoveElbows(Robot::oi->DriveArms(false));
 }
 
 // Make this return true when this Command no longer needs to run execute()

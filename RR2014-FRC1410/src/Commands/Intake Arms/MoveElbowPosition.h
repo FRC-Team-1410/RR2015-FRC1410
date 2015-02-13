@@ -5,9 +5,8 @@
 #include "WPILib.h"
 
 class MoveElbowPosition: public Command {
-	float elbowSpeed;
 public:
-	MoveElbowPosition(float speed);
+	MoveElbowPosition();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

@@ -6,7 +6,6 @@
 #include "Commands/Autonomous/LowerCanLifter.h"
 #include "Commands/Autonomous/DriveTurn.h"
 #include "Commands/Autonomous/GrabCan.h"
-#include "Commands/Autonomous/RemoveCans.h"
 #include <iostream>
 
 Autonomous::Autonomous() : CommandGroup("Autonomous"){
@@ -16,11 +15,9 @@ Autonomous::Autonomous() : CommandGroup("Autonomous"){
 	AddSequential(new DriveStraight());
 	AddSequential(new LowerToteLifter());
 	AddSequential(new RaiseToteLifter());
-	AddParallel(new RemoveCans());
 	AddSequential(new DriveStraight());
 	AddSequential(new LowerToteLifter());
 	AddSequential(new RaiseToteLifter());
-	AddParallel(new RemoveCans());
 	AddSequential(new DriveTurn());
 	AddSequential(new DriveStraight());
 }

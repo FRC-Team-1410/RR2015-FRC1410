@@ -1,9 +1,8 @@
 #include <Commands/Can Manipulator/ArticulateCanManipulator.h>
 #include "Robot.h"
 
-ArticulateCanManipulator::ArticulateCanManipulator(float speed){
+ArticulateCanManipulator::ArticulateCanManipulator(){
 	Requires(Robot::canmanipulator);
-	armSpeed = speed;
 }
 
 void ArticulateCanManipulator::Initialize(){
@@ -11,7 +10,7 @@ void ArticulateCanManipulator::Initialize(){
 }
 
 void ArticulateCanManipulator::Execute(){
-	Robot::canmanipulator->ArticulateArms(armSpeed);
+	Robot::canmanipulator->ArticulateArms(Robot::oi->DriveArms(true));
 }
 
 // Make this return true when this Command no longer needs to run execute()

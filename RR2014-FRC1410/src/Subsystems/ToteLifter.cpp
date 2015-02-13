@@ -1,4 +1,5 @@
 #include <Subsystems/ToteLifter.h>
+#include <Commands/Tote Lifter/MoveToteLifter.h>
 #include "../RobotMap.h"
 
 ToteLifter::ToteLifter() : Subsystem("ToteElevator"){
@@ -6,7 +7,7 @@ ToteLifter::ToteLifter() : Subsystem("ToteElevator"){
 }
 
 void ToteLifter::InitDefaultCommand(){
-	//SetDefaultCommand(new ());
+	//SetDefaultCommand(new MoveToteLifter());
 }
 
 bool ToteLifter::UpperLimit(){

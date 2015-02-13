@@ -21,8 +21,8 @@ private:
 public:
 	OI();
 	double GetStickAxis(bool left);
-	double DriveUpperArms();
-	double DriveLowerArms();
+	double DriveArms(bool upper);
+	double GetDriveAllAxis();
 };
 
 #endif

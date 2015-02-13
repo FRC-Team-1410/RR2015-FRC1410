@@ -1,4 +1,5 @@
 #include "IntakeArms.h"
+#include "Commands/Intake Arms/MoveElbowPosition.h"
 #include "../RobotMap.h"
 
 IntakeArms::IntakeArms() : Subsystem("IntakeArms"){
@@ -11,7 +12,7 @@ IntakeArms::IntakeArms() : Subsystem("IntakeArms"){
 }
 
 void IntakeArms::InitDefaultCommand(){
-	//SetDefaultCommand(new ToggleIntakeWheels());
+	SetDefaultCommand(new MoveElbowPosition());
 }
 
 void IntakeArms::MoveElbows(float speed){
@@ -22,10 +23,6 @@ void IntakeArms::MoveElbows(float speed){
 void IntakeArms::ToggleWheels(float speed){
 	left_wheel->Set(speed);
 	right_wheel->Set(-speed);
-}
-
-void IntakeArms::AutoRemoveCans(){
-
 }
 
 void IntakeArms::ToggleInnerWheels(float speed){

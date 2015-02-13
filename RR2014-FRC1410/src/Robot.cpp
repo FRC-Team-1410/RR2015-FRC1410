@@ -1,6 +1,6 @@
 #include "WPILib.h"
 #include "Robot.h"
-
+#include "RobotMap.h"
 #include "Commands/Drive/TeleOpTankDrive.h"
 #include "Commands/Intake Arms/ToggleIntakeWheels.h"
 #include "Commands/Intake Arms/MoveElbowPosition.h"
@@ -14,13 +14,13 @@
 #include "Commands/Autonomous/LowerCanLifter.h"
 #include "Commands/Autonomous/DriveTurn.h"
 #include "Commands/Autonomous/GrabCan.h"
-#include "Commands/Autonomous/RemoveCans.h"
 #include "Commands/Autonomous/Autonomous.h"
 
 DriveBase * Robot::drivebase = NULL;
 IntakeArms * Robot::intakearms = NULL;
 ToteLifter * Robot::totelifter = NULL;
 CanManipulator * Robot::canmanipulator = NULL;
+//CompleteRobot * Robot::completerobot = NULL;
 OI * Robot::oi = NULL;
 
 void Robot::RobotInit(){
@@ -28,8 +28,8 @@ void Robot::RobotInit(){
 	intakearms = new IntakeArms();
 	totelifter = new ToteLifter();
 	canmanipulator = new CanManipulator();
+	//completerobot = new CompleteRobot();
 	oi = new OI();
-	
 	lw = LiveWindow::GetInstance();
 	autonomouscommand = new Autonomous();
 }

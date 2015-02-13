@@ -12,7 +12,7 @@ void ToggleIntakeWheels::Initialize(){
 
 // Called repeatedly when this Command is scheduled to run
 void ToggleIntakeWheels::Execute(){
-	Robot::intakearms->ToggleWheels(0.5);
+	Robot::intakearms->ToggleWheels(-0.5);
 }
 
 // Make this return true when this Command no longer needs to run execute()

@@ -5,6 +5,7 @@
 #include "WPILib.h"
 
 class MoveCanLifter: public Command {
+	bool move_up;
 public:
 	MoveCanLifter();
 	void Initialize();

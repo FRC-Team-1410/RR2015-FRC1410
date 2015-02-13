@@ -16,12 +16,12 @@
 #include "Commands/Autonomous/LowerCanLifter.h"
 #include "Commands/Autonomous/DriveTurn.h"
 #include "Commands/Autonomous/GrabCan.h"
-#include "Commands/Autonomous/RemoveCans.h"
 
 #include "Subsystems/DriveBase.h"
 #include "Subsystems/IntakeArms.h"
 #include "Subsystems/ToteLifter.h"
 #include "Subsystems/CanManipulator.h"
+//#include "Subsystems/CompleteRobot.h"
 #include "OI.h"
 
 class Robot: public IterativeRobot {
@@ -30,6 +30,7 @@ public:
 	static IntakeArms * intakearms;
 	static ToteLifter * totelifter;
 	static CanManipulator * canmanipulator;
+	//static CompleteRobot * completerobot;
 	static OI * oi;
 
 private:
