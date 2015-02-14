@@ -7,7 +7,6 @@ CanManipulator::CanManipulator() : Subsystem("ToteElevator"){
 	left_motor = new CANTalon(can_manipulator_left);
 	right_motor = new CANTalon(can_manipulator_right);
 }
-
 void CanManipulator::InitDefaultCommand(){
 	//SetDefaultCommand(new MoveCanLifter());
 }
