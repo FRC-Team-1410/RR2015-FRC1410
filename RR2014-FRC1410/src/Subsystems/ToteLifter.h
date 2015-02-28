@@ -5,15 +5,13 @@
 
 class ToteLifter: public Subsystem{
 private:
-	CANSpeedController * elev_motor;
+	CANTalon * elev_motor; //Elevator motor
 public:
 	ToteLifter();
 	void InitDefaultCommand();
-	bool UpperLimit();
-	bool LowerLimit();
-	void MoveElevator(float speed);
-	void RaiseElevator(float speed);
-	void LowerElevator(float speed);
+	void MoveElevator(float speed); //Method to move the elevator up and down
+	bool ReturnUpperLimit(); //Returns whether the upper limit is pressed
+	bool ReturnLowerLimit(); //Returns whether the lower limit is pressed
 };
 
 #endif

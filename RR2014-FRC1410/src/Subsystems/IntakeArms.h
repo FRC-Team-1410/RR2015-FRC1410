@@ -1,23 +1,27 @@
+/*
+ * Template for C++ Command Based Robot
+ * I created this because the template is wrong
+ * By: Lord Supreme Programmer of Team 1410 Isaac
+ * Please contact me on ChiefDelphi if youfind errors
+ * Username is King Nerd III
+ */
 #ifndef IntakeArms_H
 #define IntakeArms_H
 
 #include "WPILib.h"
 
-class IntakeArms: public Subsystem {
+class IntakeArms: public Subsystem{
 private:
-	CANSpeedController * left_wheel;
-	CANSpeedController * right_wheel;
-	CANSpeedController * left_elbow;
-	CANSpeedController * right_elbow;
-	CANSpeedController * left_inner;
-	CANSpeedController * right_inner;
-
+	//Declare motors and sensors below
+	//For example:
+	//CANTalon * example_motor;
 public:
 	IntakeArms();
 	void InitDefaultCommand();
-	void MoveElbows(float speed);
-	void ToggleWheels(float speed);
-	void ToggleInnerWheels(float speed);
+	//Create methods for the subsystem to be called by commands 	here
+	//For Example:
+	//void ExampleVoidMethod(parameter);
+	//bool ExampleBoolMethod();
 };
 
 #endif

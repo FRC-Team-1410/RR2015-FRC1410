@@ -1,44 +1,39 @@
-#include <Subsystems/CanManipulator.h>
-#include "Commands/Can Manipulator/MoveCanLifter.h"
+/*
+ * Template for C++ Command Based Robot
+ * I created this because the template is wrong
+ * By: Lord Supreme Programmer of Team 1410 Isaac
+ * Please contact me on ChiefDelphi if youfind errors
+ * Username is King Nerd III
+ */
+#include "CanManipulator.h"\
+//Include the default command below
+//For example:
+//#include "Commands/ExampleCommand.h"
 #include "../RobotMap.h"
 
-CanManipulator::CanManipulator() : Subsystem("ToteElevator"){
-	elev_motor = new CANTalon(can_elev_motor);
-	left_motor = new CANTalon(can_manipulator_left);
-	right_motor = new CANTalon(can_manipulator_right);
+CanManipulator::CanManipulator() : Subsystem("CanManipulator"){
+	//Put motors and sensors below
+	//For example:
+	//example_motor = new CANTalon(1);
 }
+
 void CanManipulator::InitDefaultCommand(){
-	//SetDefaultCommand(new MoveCanLifter());
+	//Set the default command here, it will run automatically
+	//For Example:
+	//SetDefaultCommand(new ExampleCommand());
 }
 
-void CanManipulator::MoveElevator(float speed){
-		elev_motor->Set(speed);
-}
+//Create methods for your subsystem to be called by commands
+//For example:
+/**void ExampleSubsystem::ExampleVoidMethod(parameter){
+	//Put what you want to happen here
+	//For example:
+	//example_motor->Set(parameter);
+}**/
 
-void CanManipulator::ArticulateArms(float speed){
-	left_motor->Set(speed);
-	right_motor->Set(-speed);
-}
+/**bool ExampleSubsystem::ExampleBoolMethod(){
+	//Put what you want to be returned below
+	//For example:
+	//return example_motor->GetForwardLimitOK();
+}**/
 
-void CanManipulator::LowerElevator(float speed){
-	elev_motor->Set(-speed);
-}
-
-void CanManipulator::RaiseElevator(float speed){
-	elev_motor->Set(speed);
-}
-
-void CanManipulator::AutoGrabCan(float speed){
-	while(left_motor->GetForwardLimitOK() != true && right_motor->GetReverseLimitOK() != true){
-			left_motor->Set(speed);
-			right_motor->Set(-speed);
-		}
-}
-
-bool CanManipulator::UpperLimit(){
-	return elev_motor->GetForwardLimitOK();
-}
-
-bool CanManipulator::LowerLimit(){
-	return elev_motor->GetReverseLimitOK();
-}

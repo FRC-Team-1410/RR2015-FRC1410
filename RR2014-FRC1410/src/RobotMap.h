@@ -1,76 +1,46 @@
 /*
- * RobotMap.h
- *
- *  Created on: Jan 31, 2015
- *      Author: Lord Supreme Programmer Isaac
- */
+* RobotMap defines motor and sensor ports and buttons/axis for the robot.
+* This is for ease of use and so that we can easily make sure that there
+* are no conflicts
+*/
 
 #ifndef ROBOTMAP_H_
 #define ROBOTMAP_H_
 
-#include "WPILib.h"
-//drive motors
-const int front_left_drive = 1;
-const int front_right_drive = 2;
-const int back_left_drive = 3;
-const int back_right_drive = 4;
+//DriveBase motors
+const int frontLeftDrive = 1;
+const int frontRightDrive = 2;
+const int backLeftDrive = 3;
+const int backRightDrive = 4;
 
-//tote intake motors
-const int left_intake_wheel = 5;
-const int right_intake_wheel = 6;
-const int left_elbow_motor = 7;
-const int right_elbow_motor = 8;
-const int left_inner_wheel = 13;
-const int right_inner_wheel = 14;
+//CanManipulator motors
+const int canLifterMotor = 10;
+const int leftUpperArm = 11;
+const int rightUpperArm = 12;
 
-//elevator motors
-const int tote_elev_motor = 9;
-const int can_elev_motor = 10;
+//ToteLifter motors
+const int toteLifterMotor = 9;
 
-//can manipulator motors
-const int can_manipulator_left = 11;
-const int can_manipulator_right = 12;
+//IntakeArms motors
+const int leftIntakeRoller = 5;
+const int rightIntakeRoller = 6;
+const int leftElbowMotor = 7;
+const int rightElbowMotor = 8;
 
-//drive sensors
-const int drive_limit_switch = 5;
-const int drive_gyro_channel = 0;
-const int left_encoder_a = 1;
-const int left_encoder_b = 2;
-const int right_encoder_a = 3;
-const int right_encoder_b = 4;
-//tote intake sensors
+//Sensor ports
+const int gyroPort = 0;
 
-//elevator sensors
-const int tote_upper_limit = 1;
-const int tote_lower_limit = 2;
-const int can_upper_limit = 3;
-const int can_lower_limit = 4;
+//DriveTank
+const int leftDriveAxis = 1;
+const int rightDriveAxis = 5;
+const int switchToArcade = 4;
 
-//can manipulator sensors
-
-//joystick button numbers
-const int inner_rollers_in = 1;
-//const int unassigned = 8;
-//const int unassigned = 9;
-const int inner_rollers_out = 4;
-const int reset_robot_button = 5;
-const int outer_rollers_toggle = 6;
-const int pick_can_up = 7;
-const int pick_tote_up = 8;
-const int move_can_lifter = 2;
-const int move_tote_lifter = 3;
-
-//driver joystick axis numbers
-const int left_drive_axis = 1;
-const int right_drive_axis = 5;
-
-//operator joystick axis numbers
-const int articulate_upper_arms = 0;
-const int articulate_lower_arms = 4;
-
-//other constants
-const double auto_drive_distance = 48;
-
-//TALONS
+//Operator
+const int intakeInwards = 0;
+const int moveToteLifter = 1;
+const int moveCanLifter = 2;
+const int intakeOutwards = 3;
+const int freeDriveCan = 4;
+const int freeDriveTote = 5;
 
 #endif /* ROBOTMAP_H_ */

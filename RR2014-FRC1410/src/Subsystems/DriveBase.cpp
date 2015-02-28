@@ -1,62 +1,46 @@
-#include "DriveBase.h"
-#include "Commands/Drive/TeleOpTankDrive.h"
+/*
+ * Template for C++ Command Based Robot
+ * I created this because the template is wrong
+ * By: Lord Supreme Programmer of Team 1410 Isaac
+ * Please contact me on ChiefDelphi if youfind errors
+ * Username is King Nerd III
+ */
+#include "DriveBase.h"\
+//Include the default command below
+//For example:
+//#include "Commands/ExampleCommand.h"
 #include "../RobotMap.h"
-#include <math.h>
 
 DriveBase::DriveBase() : Subsystem("DriveBase"){
-	fl_motor = new CANTalon(front_left_drive);
-	fr_motor = new CANTalon(front_right_drive);
-	bl_motor = new CANTalon(back_left_drive);
-	br_motor = new CANTalon(back_right_drive);
-	//drive_limit = new AnalogInput(drive_limit_switch);
-	drive_gyro = new Gyro(drive_gyro_channel);
-	left_encoder = new Encoder(left_encoder_a, left_encoder_b);
-	right_encoder = new Encoder(right_encoder_a, right_encoder_b, true);
-	drive = new RobotDrive(1, 2, 3, 4);
-	left_encoder->Reset();
-	right_encoder->Reset();
+	fl_motor = new CANTalon(frontLeftDrive);
+	fr_motor = new CANTalon(frontRightDrive);
+	bl_motor = new CANTalon(backLeftDrive);
+	br_motor = new CANTalon(backRightDrive);
+	drive_gyro = new Gyro(gyroPort);
+
 }
 
 void DriveBase::InitDefaultCommand(){
-	SetDefaultCommand(new TeleOpTankDrive());
+	//SetDefaultCommand(new ExampleCommand());
 }
 
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
-void DriveBase::DriveTank(float speed1, float speed2){
-	fl_motor->Set(speed1);
-	fr_motor->Set(speed2);
-	bl_motor->Set(speed1);
-	br_motor->Set(speed2);
+//Method for driving tank
+void DriveBase::DriveTank(float left_speed, float right_speed){
+	fl_motor->Set(left_speed);
+	fr_motor->Set(right_speed);
+	bl_motor->Set(left_speed);
+	br_motor->Set(right_speed);
 }
 
-/**bool DriveBase::IsLimitSwitchToggled(){
-	return drive_limit;
-}**/
+//Method to return distance driven
+float DriveBase::ReturnEncoderDistance(float e1, float e2, float distance){
+	e2 = bl_motor->GetEncPosition() / 256.0 * 3.14159265;
+	e1 = br_motor->GetEncPosition() / 256.0 * 3.14159265;
 
-void DriveBase::ResetGyro(){
-	drive_gyro->Reset();
+	distance = (e2 + e1) / 2;
+
+	return -distance;
 }
 
-void DriveBase::AutoDriveStraight(float speed){
-	fl_motor->Set(speed);
-	fr_motor->Set(-speed);
-	bl_motor->Set(speed);
-	br_motor->Set(-speed);
-}
-
-double DriveBase::GetGyroAngle(){
-	return drive_gyro->GetAngle();
-}
-
-double DriveBase::EncoderDistance(double e1, double e2, double distance) {
-	e1=left_encoder->GetDistance()/ 256.0 * 3 * 3.14159265;
-	e2=right_encoder->GetDistance()/ 256.0 * 3 * 3.14159265;
-	distance = (e1 + e2) / 2;
-	return(distance);
-}
-
-void DriveBase::ResetEncoders(){
-	left_encoder->Reset();
-	right_encoder->Reset();
-}
+//Method to return the gyro angle
+//Method to reset the gyro

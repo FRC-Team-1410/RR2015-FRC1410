@@ -1,31 +1,39 @@
-#include "IntakeArms.h"
-#include "Commands/Intake Arms/MoveElbowPosition.h"
+/*
+ * Template for C++ Command Based Robot
+ * I created this because the template is wrong
+ * By: Lord Supreme Programmer of Team 1410 Isaac
+ * Please contact me on ChiefDelphi if youfind errors
+ * Username is King Nerd III
+ */
+#include "IntakeArms.h"\
+//Include the default command below
+//For example:
+//#include "Commands/ExampleCommand.h"
 #include "../RobotMap.h"
 
 IntakeArms::IntakeArms() : Subsystem("IntakeArms"){
-	left_wheel = new CANTalon(left_intake_wheel);
-	right_wheel = new CANTalon(right_intake_wheel);
-	left_elbow = new CANTalon(left_elbow_motor);
-	right_elbow = new CANTalon(right_elbow_motor);
-	left_inner = new CANTalon(left_inner_wheel);
-	right_inner = new CANTalon(right_inner_wheel);
+	//Put motors and sensors below
+	//For example:
+	//example_motor = new CANTalon(1);
 }
 
 void IntakeArms::InitDefaultCommand(){
-	SetDefaultCommand(new MoveElbowPosition());
+	//Set the default command here, it will run automatically
+	//For Example:
+	//SetDefaultCommand(new ExampleCommand());
 }
 
-void IntakeArms::MoveElbows(float speed){
-	left_elbow->Set(speed);
-	right_elbow->Set(-speed);
-}
+//Create methods for your subsystem to be called by commands
+//For example:
+/**void ExampleSubsystem::ExampleVoidMethod(parameter){
+	//Put what you want to happen here
+	//For example:
+	//example_motor->Set(parameter);
+}**/
 
-void IntakeArms::ToggleWheels(float speed){
-	left_wheel->Set(speed);
-	right_wheel->Set(-speed);
-}
+/**bool ExampleSubsystem::ExampleBoolMethod(){
+	//Put what you want to be returned below
+	//For example:
+	//return example_motor->GetForwardLimitOK();
+}**/
 
-void IntakeArms::ToggleInnerWheels(float speed){
-	left_inner->Set(speed);
-	right_inner->Set(-speed);
-}

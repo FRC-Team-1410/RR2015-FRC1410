@@ -5,26 +5,18 @@
 
 class DriveBase: public Subsystem{
 private:
-	CANSpeedController * fl_motor;
-	CANSpeedController * fr_motor;
-	CANSpeedController * bl_motor;
-	CANSpeedController * br_motor;
-	//AnalogInput * drive_limit;
-	RobotDrive * drive;
-	Gyro * drive_gyro;
-	Encoder * left_encoder;
-	Encoder * right_encoder;
+	CANTalon * fl_motor; //Front left drive motor
+	CANTalon * fr_motor; //Front right drive motor
+	CANTalon * bl_motor; //Back left drive motor
+	CANTalon * br_motor; //Back right drive motor
+	Gyro * drive_gyro; //Gyro for drive
 public:
 	DriveBase();
 	void InitDefaultCommand();
-	void DriveTank(float speed1, float speed2);
-	//void DriveOmni(float speed);
-	bool IsLimitSwitchToggled();
-	void ResetGyro();
-	void AutoDriveStraight(float speed);
-	double GetGyroAngle();
-	double EncoderDistance(double e1, double e2, double distance);
-	void ResetEncoders();
+	void DriveTank(float left_speed, float right_speed); //Method for driving tank
+	float ReturnEncoderDistance(float e1, float e2, float distance); //Method to return distance driven
+	float ReturnGyroPosition(); //Method to return the gyro angle
+	void ResetGyro(); //Method to reset the gyro
 };
 
 #endif

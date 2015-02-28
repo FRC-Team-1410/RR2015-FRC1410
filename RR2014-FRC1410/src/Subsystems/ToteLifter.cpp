@@ -1,30 +1,25 @@
-#include <Subsystems/ToteLifter.h>
-#include <Commands/Tote Lifter/MoveToteLifter.h>
+#include "ToteLifter.h"
 #include "../RobotMap.h"
 
-ToteLifter::ToteLifter() : Subsystem("ToteElevator"){
-	elev_motor = new CANTalon(tote_elev_motor);
+ToteLifter::ToteLifter() : Subsystem("ToteLifter"){
+	elev_motor = new CANTalon(toteLifterMotor); //Elevator motor
 }
 
 void ToteLifter::InitDefaultCommand(){
-	//SetDefaultCommand(new MoveToteLifter());
+	//SetDefaultCommand(new);
 }
 
-bool ToteLifter::UpperLimit(){
-	return elev_motor->GetForwardLimitOK();
-}
-
-bool ToteLifter::LowerLimit(){
-	return elev_motor->GetReverseLimitOK();
-}
+//Method to move the elevator up and down
 void ToteLifter::MoveElevator(float speed){
 	elev_motor->Set(speed);
 }
 
-void ToteLifter::RaiseElevator(float speed){
-	elev_motor->Set(speed);
+//Returns whether the upper limit is pressed
+bool ToteLifter::ReturnUpperLimit(){
+	return elev_motor->IsRevLimitSwitchClosed();
 }
 
-void ToteLifter::LowerElevator(float speed){
-	elev_motor->Set(-speed);
+//Returns whether the lower limit is pressed
+bool ToteLifter::ReturnLowerLimit(){
+	return elev_motor->IsFwdLimitSwitchClosed();
 }
