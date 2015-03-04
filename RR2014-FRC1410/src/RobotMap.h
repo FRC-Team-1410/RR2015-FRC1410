@@ -24,8 +24,8 @@ const int toteLifterMotor = 9;
 //IntakeArms motors
 const int leftIntakeRoller = 5;
 const int rightIntakeRoller = 6;
-const int leftElbowMotor = 7;
-const int rightElbowMotor = 8;
+const int leftLowerArm = 7;
+const int rightLowerArm = 8;
 
 //Sensor ports
 const int gyroPort = 0;
@@ -33,7 +33,6 @@ const int gyroPort = 0;
 //DriveTank
 const int leftDriveAxis = 1;
 const int rightDriveAxis = 5;
-const int switchToArcade = 4;
 
 //Operator
 const int intakeInwards = 0;

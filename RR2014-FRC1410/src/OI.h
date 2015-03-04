@@ -1,10 +1,3 @@
-/*
- * Template for C++ Command Based Robot
- * I created this because the template is wrong
- * By: Lord Supreme Programmer of Team 1410 Isaac
- * Please contact me on ChiefDelphi if youfind errors
- * Username is King Nerd III
- */
 #ifndef OI_H
 #define OI_H
 
@@ -12,16 +5,17 @@
 
 class OI{
 private:
-	//Create joysticks and buttons below
-	//For example:
-	//Joystick * example_stick;
-	//JoystickButton * example_button;
+	Joystick * driver_stick;
+	Joystick * operator_stick;
 
+	JoystickButton * toggle_intake_wheels;
+	JoystickButton * move_tote_lifter;
+	JoystickButton * move_can_lifter;
 public:
 	OI();
-	//Name methods for your OI below
-	//For example:
-	//double ExampleOIMethod();
+	double GetDriveAxis(bool left);
+	double GetArmAxis(bool lower);
+	double GetElevatorAxis();
 };
 
 #endif

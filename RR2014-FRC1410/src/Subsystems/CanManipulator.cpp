@@ -1,39 +1,45 @@
-/*
- * Template for C++ Command Based Robot
- * I created this because the template is wrong
- * By: Lord Supreme Programmer of Team 1410 Isaac
- * Please contact me on ChiefDelphi if youfind errors
- * Username is King Nerd III
- */
-#include "CanManipulator.h"\
-//Include the default command below
-//For example:
-//#include "Commands/ExampleCommand.h"
+#include "CanManipulator.h"
+#include "Commands/Can Manipulator/MoveUpperArms.h"
 #include "../RobotMap.h"
 
 CanManipulator::CanManipulator() : Subsystem("CanManipulator"){
-	//Put motors and sensors below
-	//For example:
-	//example_motor = new CANTalon(1);
+	elev_motor = new CANTalon(canLifterMotor);
+	left_arm = new CANTalon(leftUpperArm);
+	right_arm = new CANTalon(rightUpperArm);
 }
 
 void CanManipulator::InitDefaultCommand(){
-	//Set the default command here, it will run automatically
-	//For Example:
-	//SetDefaultCommand(new ExampleCommand());
+	SetDefaultCommand(new MoveUpperArms());
 }
 
-//Create methods for your subsystem to be called by commands
-//For example:
-/**void ExampleSubsystem::ExampleVoidMethod(parameter){
-	//Put what you want to happen here
-	//For example:
-	//example_motor->Set(parameter);
-}**/
+void CanManipulator::MoveElevator(float speed){
+	elev_motor->Set(speed);
+}
 
-/**bool ExampleSubsystem::ExampleBoolMethod(){
-	//Put what you want to be returned below
-	//For example:
-	//return example_motor->GetForwardLimitOK();
-}**/
+bool CanManipulator::ReturnUpperLimit(){
+	return elev_motor->IsFwdLimitSwitchClosed();
+}
 
+bool CanManipulator::ReturnLowerLimit(){
+	return elev_motor->IsRevLimitSwitchClosed();
+}
+
+void CanManipulator::MoveElbows(float left_speed, float right_speed){
+	left_arm->Set(left_speed);
+	right_arm->Set(right_speed);
+}
+
+float CanManipulator::ReturnArmAngle(){
+	left_arm->SetFeedbackDevice(CANTalon::AnalogPot);
+	right_arm->SetFeedbackDevice(CANTalon::AnalogPot);
+
+	float angle = 0;
+	angle = (left_arm->GetPosition() + (right_arm->GetPosition() * -1)) / 2;
+
+	return angle;
+}
+
+void CanManipulator::ResetPotentiometers(){
+	left_arm->SetPosition(0);
+	right_arm->SetPosition(0);
+}

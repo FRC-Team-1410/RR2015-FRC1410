@@ -1,39 +1,39 @@
-/*
- * Template for C++ Command Based Robot
- * I created this because the template is wrong
- * By: Lord Supreme Programmer of Team 1410 Isaac
- * Please contact me on ChiefDelphi if youfind errors
- * Username is King Nerd III
- */
-#include "IntakeArms.h"\
-//Include the default command below
-//For example:
-//#include "Commands/ExampleCommand.h"
+#include <Commands/Intake Arms/MoveLowerArms.h>
+#include "IntakeArms.h"
 #include "../RobotMap.h"
 
 IntakeArms::IntakeArms() : Subsystem("IntakeArms"){
-	//Put motors and sensors below
-	//For example:
-	//example_motor = new CANTalon(1);
+	left_arm = new CANTalon(leftLowerArm);
+	right_arm = new CANTalon(rightLowerArm);
+	left_wheel = new CANTalon(leftIntakeRoller);
+	right_wheel = new CANTalon(rightIntakeRoller);
 }
 
 void IntakeArms::InitDefaultCommand(){
-	//Set the default command here, it will run automatically
-	//For Example:
-	//SetDefaultCommand(new ExampleCommand());
+	SetDefaultCommand(new MoveLowerArms());
 }
 
-//Create methods for your subsystem to be called by commands
-//For example:
-/**void ExampleSubsystem::ExampleVoidMethod(parameter){
-	//Put what you want to happen here
-	//For example:
-	//example_motor->Set(parameter);
-}**/
+void IntakeArms::MoveElbows(float left_speed, float right_speed){
+	left_arm->Set(left_speed);
+	right_arm->Set(right_speed);
+}
 
-/**bool ExampleSubsystem::ExampleBoolMethod(){
-	//Put what you want to be returned below
-	//For example:
-	//return example_motor->GetForwardLimitOK();
-}**/
+void IntakeArms::ToggleRollers(float speed){
+	left_wheel->Set(speed);
+	right_wheel->Set(-speed);
+}
 
+float IntakeArms::ReturnArmsAngle(){
+	left_arm->SetFeedbackDevice(CANTalon::AnalogPot);
+	right_arm->SetFeedbackDevice(CANTalon::AnalogPot);
+
+	float angle = 0;
+	angle = (left_arm->GetPosition() + (right_arm->GetPosition() * 1)) / 2;
+
+	return angle;
+}
+
+void IntakeArms::ResetPotentiometers(){
+	left_arm->SetPosition(0);
+	right_arm->SetPosition(0);
+}

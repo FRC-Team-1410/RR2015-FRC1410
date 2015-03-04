@@ -1,14 +1,5 @@
-/*
- * Template for C++ Command Based Robot
- * I created this because the template is wrong
- * By: Lord Supreme Programmer of Team 1410 Isaac
- * Please contact me on ChiefDelphi if youfind errors
- * Username is King Nerd III
- */
-#include "DriveBase.h"\
-//Include the default command below
-//For example:
-//#include "Commands/ExampleCommand.h"
+#include "DriveBase.h"
+#include "Commands/Drive Base/TeleOpTankDrive.h"
 #include "../RobotMap.h"
 
 DriveBase::DriveBase() : Subsystem("DriveBase"){
@@ -17,14 +8,12 @@ DriveBase::DriveBase() : Subsystem("DriveBase"){
 	bl_motor = new CANTalon(backLeftDrive);
 	br_motor = new CANTalon(backRightDrive);
 	drive_gyro = new Gyro(gyroPort);
-
 }
 
 void DriveBase::InitDefaultCommand(){
-	//SetDefaultCommand(new ExampleCommand());
+	SetDefaultCommand(new TeleOpTankDrive());
 }
 
-//Method for driving tank
 void DriveBase::DriveTank(float left_speed, float right_speed){
 	fl_motor->Set(left_speed);
 	fr_motor->Set(right_speed);
@@ -32,15 +21,29 @@ void DriveBase::DriveTank(float left_speed, float right_speed){
 	br_motor->Set(right_speed);
 }
 
-//Method to return distance driven
 float DriveBase::ReturnEncoderDistance(float e1, float e2, float distance){
-	e2 = bl_motor->GetEncPosition() / 256.0 * 3.14159265;
-	e1 = br_motor->GetEncPosition() / 256.0 * 3.14159265;
+	bl_motor->SetFeedbackDevice(CANTalon::QuadEncoder);
+	br_motor->SetFeedbackDevice(CANTalon::QuadEncoder);
+	//bl_motor->SetSensorDirection(true);
+	//br_motor->SetSensorDirection(true);
+
+	e1 = bl_motor->GetEncPosition();
+	e2 = br_motor->GetEncPosition() * -1;
 
 	distance = (e2 + e1) / 2;
-
-	return -distance;
+	SmartDashboard::PutNumber("Encoder Distance", distance);
+	return distance;
 }
 
-//Method to return the gyro angle
-//Method to reset the gyro
+void DriveBase::ResetEncoderPosition(){
+	bl_motor->SetPosition(0);
+	br_motor->SetPosition(0);
+}
+
+float DriveBase::ReturnGyroPosition(){
+	return drive_gyro->GetAngle();
+}
+
+void DriveBase::ResetGyro(){
+	drive_gyro->Reset();
+}
