@@ -17,7 +17,8 @@ void AutoDriveStraight::Execute(){
 }
 
 bool AutoDriveStraight::IsFinished(){
-	if(Robot::drivebase->ReturnEncoderDistance(0, 0, 0) >= drive_distance){
+	if(Robot::drivebase->ReturnEncoderDistance(0, 0, 0) >= 3000){
+		Robot::drivebase->DriveTank(0, 0);
 		Robot::drivebase->ResetEncoderPosition();
 		return true;
 	}

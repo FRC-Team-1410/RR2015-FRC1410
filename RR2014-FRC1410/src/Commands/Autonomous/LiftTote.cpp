@@ -10,7 +10,7 @@ void LiftTote::Initialize(){
 }
 
 void LiftTote::Execute(){
-		Robot::totelifter->MoveElevator(-1);
+		Robot::totelifter->MoveElevator(1);
 }
 
 bool LiftTote::IsFinished(){

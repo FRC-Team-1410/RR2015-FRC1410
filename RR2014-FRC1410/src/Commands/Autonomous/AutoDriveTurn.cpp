@@ -15,7 +15,7 @@ void AutoDriveTurn::Execute(){
 }
 
 bool AutoDriveTurn::IsFinished(){
-	if(Robot::drivebase->ReturnGyroPosition() >= 256){
+	if(Robot::drivebase->ReturnGyroPosition() <= -0.256){
 		return true;
 	}
 	else{

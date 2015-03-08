@@ -4,10 +4,9 @@
 #include "Commands/CommandGroup.h"
 #include "WPILib.h"
 
-class SimultaneousManipulatorOp: public CommandGroup
-{
+class SimultaneousManipulatorOp: public CommandGroup{
 public:
-	SimultaneousManipulatorOp();
+	SimultaneousManipulatorOp(float speed);
 };
 
 #endif

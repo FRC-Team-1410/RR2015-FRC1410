@@ -5,18 +5,19 @@
 
 class CanManipulator: public Subsystem{
 private:
-	CANTalon * elev_motor;
-	CANTalon * left_arm;
-	CANTalon * right_arm;
+	CANTalon * elev_motor; //elevator motor
+	CANTalon * left_arm; //left upper arm motor
+	CANTalon * right_arm; //right upper arm motor
 public:
 	CanManipulator();
 	void InitDefaultCommand();
-	void MoveElevator(float speed);
-	bool ReturnUpperLimit();
-	bool ReturnLowerLimit();
-	void MoveElbows(float left_speed, float right_speed);
-	float ReturnArmAngle();
-	void ResetPotentiometers();
+	void MoveElevator(float speed); //moves elevator
+	bool ReturnUpperLimit(); //returns the upper limit state
+	bool ReturnLowerLimit(); //returns the lower limit state
+	void MoveElbows(float left_speed, float right_speed); //moves elbows
+	float ReturnArmAngle(); //returns the angles
+	float ReturnArmAngle(bool left); //returns one of the arms angles
+	void ResetPotentiometers(); //sets position to 0
 };
 
 #endif

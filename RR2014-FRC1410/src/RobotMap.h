@@ -35,11 +35,11 @@ const int leftDriveAxis = 1;
 const int rightDriveAxis = 5;
 
 //Operator
-const int intakeInwards = 0;
-const int moveToteLifter = 1;
-const int moveCanLifter = 2;
-const int intakeOutwards = 3;
-const int freeDriveCan = 4;
-const int freeDriveTote = 5;
+const int intakeInwards = 1;
+const int moveToteLifter = 2;
+const int moveCanUp = 4;
+const int moveCanDown = 3;
+const int freeDriveCan = 5;
+const int freeDriveTote = 6;
 
 #endif /* ROBOTMAP_H_ */

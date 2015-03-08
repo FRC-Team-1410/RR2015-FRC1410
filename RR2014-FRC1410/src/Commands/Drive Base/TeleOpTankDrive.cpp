@@ -2,7 +2,7 @@
 #include "Robot.h"
 
 TeleOpTankDrive::TeleOpTankDrive(){
-	Requires(Robot::drivebase);
+	Requires(Robot::drivebase); //requires the drivebase subsystem
 }
 
 void TeleOpTankDrive::Initialize(){
@@ -10,7 +10,7 @@ void TeleOpTankDrive::Initialize(){
 }
 
 void TeleOpTankDrive::Execute(){
-	Robot::drivebase->DriveTank(Robot::oi->GetDriveAxis(true), Robot::oi->GetDriveAxis(false));
+	Robot::drivebase->DriveTank(Robot::oi->GetDriveAxis(true), Robot::oi->GetDriveAxis(false)); //drives the wheels with the values returned from oi
 }
 
 bool TeleOpTankDrive::IsFinished(){
@@ -18,9 +18,9 @@ bool TeleOpTankDrive::IsFinished(){
 }
 
 void TeleOpTankDrive::End(){
-	Robot::drivebase->DriveTank(0,0);
+	Robot::drivebase->DriveTank(0,0); //sets the wheels to 0. needed so there isn't drift or the wheels continue driving when not supposed to
 }
 
 void TeleOpTankDrive::Interrupted(){
-	End();
+	End(); //ends command
 }

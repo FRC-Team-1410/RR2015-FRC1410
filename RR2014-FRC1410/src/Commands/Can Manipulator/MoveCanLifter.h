@@ -5,8 +5,9 @@
 #include "WPILib.h"
 
 class MoveCanLifter: public Command {
+	float speed; //speed for driving the elevator
 public:
-	MoveCanLifter();
+	MoveCanLifter(float drive_speed);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
