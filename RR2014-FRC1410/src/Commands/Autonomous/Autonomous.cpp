@@ -1,19 +1,24 @@
-#include <Commands/Autonomous/AutoDriveStraight.h>
 #include "Autonomous.h"
-#include "LiftTote.h"
-#include "LowerTote.h"
-#include "AutoDriveTurn.h"
-#include "MoveSingleArm.h"
-#include "AutoMoveElevator.h"
+#include "CommandGroups/FirstTote.h"
+#include "CommandGroups/SecondTote.h"
+#include "CommandGroups/ThirdTote.h"
+#include "CommandGroups/Turn.h"
+#include "CommandGroups/AutoZone.h"
+#include "CommandGroups/DropTotes.h"
+#include "CommandGroups/FinishAuto.h"
+#include "CommandGroups/SimpleAuto.h"
+#include "CommandGroups/SingleCommands/Drive/AutoDriveToTote.h"
 
 Autonomous::Autonomous(){
-	AddSequential(new LowerTote());
-	AddSequential(new LiftTote());
-	AddSequential(new AutoDriveStraight(5900));
-	AddSequential(new LowerTote());
-	AddSequential(new LiftTote());
-	AddSequential(new AutoDriveStraight(5900));
-	AddSequential(new LowerTote());
-	AddSequential(new LiftTote());
-	AddSequential(new AutoDriveTurn());
+	AddSequential(new FirstTote());
+	AddSequential(new SecondTote());
+	AddSequential(new ThirdTote());
+	//AddSequential(new Turn());
+	AddSequential(new AutoZone());
+	AddSequential(new DropTotes());
+	AddSequential(new FinishAuto());
+
+	//AddSequential(new SimpleAuto());
+
+	//AddSequential(new AutoDriveToTote());
 }

@@ -4,8 +4,7 @@
 #include "Commands/CommandGroup.h"
 #include "WPILib.h"
 
-class Autonomous: public CommandGroup
-{
+class Autonomous: public CommandGroup{
 public:
 	Autonomous();
 };
