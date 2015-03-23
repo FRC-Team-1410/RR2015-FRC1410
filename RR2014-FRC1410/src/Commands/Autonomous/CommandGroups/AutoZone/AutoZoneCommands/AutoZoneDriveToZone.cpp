@@ -6,15 +6,15 @@ AutoZoneDriveToZone::AutoZoneDriveToZone(){
 }
 
 void AutoZoneDriveToZone::Initialize(){
-	Robot::drivebase->ResetEncoderPosition();
+	//Robot::drivebase->ResetEncoderPosition();
 }
 
 void AutoZoneDriveToZone::Execute(){
-	Robot::drivebase->DriveTank(-0.5,0.5);
+	Robot::drivebase->DriveTank(-0.75,0.75);
 }
 
 bool AutoZoneDriveToZone::IsFinished(){
-	return (Robot::drivebase->ReturnEncoderDistance(0,0,0) >= 4500);
+	return (Robot::drivebase->ReturnEncoderDistance(0,0,0) >= 18450); //orig = 19000
 }
 
 void AutoZoneDriveToZone::End(){

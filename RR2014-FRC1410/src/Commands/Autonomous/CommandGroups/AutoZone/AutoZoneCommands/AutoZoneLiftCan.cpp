@@ -12,7 +12,7 @@ void AutoZoneLiftCan::Initialize(){
 
 void AutoZoneLiftCan::Execute(){
 	Robot::canmanipulator->MoveElevator(1);
-	Wait(1);
+	Wait(1.2);
 	end = true;
 }
 

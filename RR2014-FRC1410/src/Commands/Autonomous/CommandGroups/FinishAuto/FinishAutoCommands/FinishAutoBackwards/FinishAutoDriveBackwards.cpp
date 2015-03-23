@@ -10,11 +10,11 @@ void FinishAutoDriveBackwards::Initialize(){
 }
 
 void FinishAutoDriveBackwards::Execute(){
-	Robot::drivebase->DriveTank(0.5,-0.5);
+	Robot::drivebase->DriveTank(0.75,-0.75);
 }
 
 bool FinishAutoDriveBackwards::IsFinished(){
-	return (Robot::drivebase->ReturnEncoderDistance(0,0,0) <= -2000);
+	return (Robot::drivebase->ReturnEncoderDistance(0,0,0) <= -1750);
 }
 
 void FinishAutoDriveBackwards::End(){

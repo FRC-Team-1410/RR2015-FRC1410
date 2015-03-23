@@ -11,6 +11,7 @@ void TeleOpTankDrive::Initialize(){
 
 void TeleOpTankDrive::Execute(){
 	Robot::drivebase->DriveTank(Robot::oi->GetDriveAxis(true), Robot::oi->GetDriveAxis(false)); //drives the wheels with the values returned from oi
+	Robot::drivebase->ReturnEncoderDistance(0,0,0);
 }
 
 bool TeleOpTankDrive::IsFinished(){

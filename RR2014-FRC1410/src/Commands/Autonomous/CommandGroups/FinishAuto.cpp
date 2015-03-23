@@ -3,6 +3,6 @@
 #include "FinishAuto/FinishAutoBackwards.h"
 
 FinishAuto::FinishAuto(){
-	AddSequential(new FinishAutoLift());
+	//AddSequential(new FinishAutoLift());
 	AddSequential(new FinishAutoBackwards());
 }

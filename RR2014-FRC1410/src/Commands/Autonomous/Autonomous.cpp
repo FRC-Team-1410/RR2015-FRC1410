@@ -13,7 +13,7 @@ Autonomous::Autonomous(){
 	AddSequential(new FirstTote());
 	AddSequential(new SecondTote());
 	AddSequential(new ThirdTote());
-	//AddSequential(new Turn());
+	AddSequential(new Turn());
 	AddSequential(new AutoZone());
 	AddSequential(new DropTotes());
 	AddSequential(new FinishAuto());

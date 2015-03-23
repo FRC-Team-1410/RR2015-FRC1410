@@ -3,18 +3,22 @@
 
 TurnDriveTurn::TurnDriveTurn(){
 	Requires(Robot::drivebase);
+	end = false;
 }
 
 void TurnDriveTurn::Initialize(){
 	Robot::drivebase->ResetGyro();
+	end = false;
 }
 
 void TurnDriveTurn::Execute(){
-	Robot::drivebase->DriveTank(-0.5,-0.5);
+	Robot::drivebase->DriveTank(-0.8,-0.8);
+	Wait(0.5);
+	end = true;
 }
 
 bool TurnDriveTurn::IsFinished(){
-	return (Robot::drivebase->ReturnGyroPosition() >= 75);
+	return (end);
 }
 
 void TurnDriveTurn::End(){

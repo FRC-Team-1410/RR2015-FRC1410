@@ -5,6 +5,7 @@
 #include "WPILib.h"
 
 class TurnDriveTurn: public Command {
+	bool end;
 public:
 	TurnDriveTurn();
 	void Initialize();
