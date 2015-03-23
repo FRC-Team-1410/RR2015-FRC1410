@@ -11,8 +11,8 @@ void FirstToteMoveLeftOut::Initialize(){
 }
 
 void FirstToteMoveLeftOut::Execute(){
-	Robot::canmanipulator->MoveElbows(0.5, 0);
-	Wait(0.75);
+	Robot::canmanipulator->MoveElbows(0.8, 0);
+	Wait(0.5);
 	end = true;
 }
 
