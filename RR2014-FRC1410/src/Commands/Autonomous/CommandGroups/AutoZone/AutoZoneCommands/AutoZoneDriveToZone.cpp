@@ -14,7 +14,7 @@ void AutoZoneDriveToZone::Execute(){
 }
 
 bool AutoZoneDriveToZone::IsFinished(){
-	return (Robot::drivebase->ReturnEncoderDistance(0,0,0) >= 18450); //orig = 19000
+	return (Robot::drivebase->ReturnEncoderDistance(0,0,0) >= 18300); //orig = 18500
 }
 
 void AutoZoneDriveToZone::End(){

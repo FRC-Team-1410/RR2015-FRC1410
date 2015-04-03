@@ -3,6 +3,6 @@
 #include "SecondToteCommands/SecondToteArrival/SecondToteLowerTote.h"
 
 SecondToteArrival::SecondToteArrival(){
-	AddParallel(new SecondToteLowerCan());
+	//(new SecondToteLowerCan());
 	AddParallel(new SecondToteLowerTote());
 }

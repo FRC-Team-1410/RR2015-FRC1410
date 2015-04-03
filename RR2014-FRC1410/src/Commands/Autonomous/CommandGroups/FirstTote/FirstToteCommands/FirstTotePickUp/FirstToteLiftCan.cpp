@@ -12,7 +12,7 @@ void FirstToteLiftCan::Initialize(){
 
 void FirstToteLiftCan::Execute(){
 	Robot::canmanipulator->MoveElevator(1);
-	Wait(1);
+	Wait(1.15);
 	end = true;
 }
 

@@ -29,11 +29,13 @@ float DriveBase::ReturnEncoderDistance(float e1, float e2, float distance){
 	//bl_motor->SetSensorDirection(true);
 	//br_motor->SetSensorDirection(true);
 
-	e1 = bl_motor->GetEncPosition(); //sets e1 to left value
-	e2 = br_motor->GetEncPosition() * -1; //sets e2 to right value times -1 because yay inverting
+	e1 = bl_motor->GetEncPosition() * -1; //sets e1 to left value
+	distance = br_motor->GetEncPosition() * -1; //sets e2 to right value times -1 because yay inverting
 
-	distance = (e2 + e1) / 2; //averages the distances
-	SmartDashboard::PutNumber("Encoder Distance", distance); //puts the number on the smartdashboard
+	//distance = (e2 + e1) / 2; //averages the distances
+	SmartDashboard::PutNumber("Encoder Distance", distance);//puts the number on the smartdashboard
+	SmartDashboard::PutNumber("Left Encoder Distance", e1 = bl_motor->GetEncPosition() * -1);
+	SmartDashboard::PutNumber("Right Encoder Distance", e2 = br_motor->GetEncPosition() * -1);
 	return distance; //returns distance
 }
 

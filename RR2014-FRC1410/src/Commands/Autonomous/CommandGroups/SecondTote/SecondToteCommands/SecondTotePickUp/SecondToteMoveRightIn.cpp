@@ -11,8 +11,8 @@ void SecondToteMoveRightIn::Initialize(){
 }
 
 void SecondToteMoveRightIn::Execute(){
-	Robot::canmanipulator->MoveElbows(0, 0.5);
-	Wait(0.85);
+	Robot::canmanipulator->MoveElbows(0, 0.45);
+	Wait(0.5);
 	end = true;
 }
 

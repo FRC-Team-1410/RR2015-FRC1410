@@ -10,11 +10,11 @@ void SecondToteDriveToTote::Initialize(){
 }
 
 void SecondToteDriveToTote::Execute(){
-	Robot::drivebase->DriveTank(-0.75,0.75);
+	Robot::drivebase->DriveTank(-0.5,0.5);
 }
 
 bool SecondToteDriveToTote::IsFinished(){
-	return (Robot::drivebase->ReturnEncoderDistance(0,0,0) >= 11950); //orig = 12700
+	return (Robot::drivebase->ReturnEncoderDistance(0,0,0) >= 13000); //orig = 12700
 }
 
 void SecondToteDriveToTote::End(){

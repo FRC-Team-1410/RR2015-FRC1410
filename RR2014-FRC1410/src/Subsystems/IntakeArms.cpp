@@ -21,7 +21,7 @@ void IntakeArms::MoveElbows(float left_speed, float right_speed){
 
 //turns rollers on or off
 void IntakeArms::ToggleRollers(float speed){
-	left_wheel->Set(-speed); //sets the left to negative speed
+	left_wheel->Set(speed); //sets the left to negative speed
 	right_wheel->Set(-speed); //sets the right to speed
 }
 

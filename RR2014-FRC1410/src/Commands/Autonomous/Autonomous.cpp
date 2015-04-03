@@ -8,6 +8,7 @@
 #include "CommandGroups/FinishAuto.h"
 #include "CommandGroups/SimpleAuto.h"
 #include "CommandGroups/SingleCommands/Drive/AutoDriveToTote.h"
+#include "CommandGroups/SecondTote/SecondTotePickup.h"
 
 Autonomous::Autonomous(){
 	AddSequential(new FirstTote());
@@ -17,6 +18,7 @@ Autonomous::Autonomous(){
 	AddSequential(new AutoZone());
 	AddSequential(new DropTotes());
 	AddSequential(new FinishAuto());
+	//AddSequential(new SecondTotePickUp());
 
 	//AddSequential(new SimpleAuto());
 

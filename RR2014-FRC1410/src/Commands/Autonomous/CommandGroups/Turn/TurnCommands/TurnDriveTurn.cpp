@@ -12,13 +12,14 @@ void TurnDriveTurn::Initialize(){
 }
 
 void TurnDriveTurn::Execute(){
-	Robot::drivebase->DriveTank(-0.8,-0.8);
-	Wait(0.5);
+	Robot::drivebase->DriveTank(-0.6,-0.6);
+	//Wait(1.2);
 	end = true;
 }
 
 bool TurnDriveTurn::IsFinished(){
-	return (end);
+	//return (end);
+	return (Robot::drivebase->ReturnGyroPosition() >= 60);
 }
 
 void TurnDriveTurn::End(){
